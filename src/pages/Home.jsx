@@ -1,37 +1,28 @@
-import { useEffect, useState } from 'react';
-import RestCountries from '../services/RestCountries';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCountries } from '../features/country/countrySlice';
 import CountryList from '../components/content/CountryList';
 
 function Home() {
-  const [countries, setCountries] = useState([]);
-  const [error, setError] = useState(null);
-
-  async function getCountries() {
-    try {
-      const response = await RestCountries();
-      setCountries(response);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  const dispatch = useDispatch();
+  const { countries, loading, error } = useSelector((state) => state.countries);
 
   useEffect(() => {
-    getCountries();
-  }, []);
+    dispatch(fetchCountries());
+  }, [dispatch]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
-	const sortedCountries = [...countries].sort(
-		(a, b) => b.population - a.population
-	);
+  const sortedCountries = [...countries].sort(
+    (a, b) => b.population - a.population
+  );
 
-	return (
-		<>
-			<CountryList countries={sortedCountries} />
-		</>
-	);
+  return (
+    <>
+      <CountryList countries={sortedCountries} />
+    </>
+  );
 }
 
 export default Home;
