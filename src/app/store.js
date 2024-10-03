@@ -1,8 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
+import countriesSlice from '../features/country/countrySlice';
+import newsSlice from '../features/news/newsSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     countries: countriesSlice,
-		news: newsSlice,
+    news: newsSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
+
+export default store;

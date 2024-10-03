@@ -6,15 +6,15 @@ const NYTIMES_KEY = import.meta.env.VITE_NYTIMES_KEY;
 
 export const fetchNews = createAsyncThunk(
   'news/fetchNews',
-  async (query, { rejectWithValue }) => {
+  async ({ query, page }, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${NYTIMES}/articlesearch.json?q=${query}&api-key=${NYTIMES_KEY}`
+        `${NYTIMES}/articlesearch.json?q=${query}&page=${page}&api-key=${NYTIMES_KEY}`
       );
       return response.data.response.docs;
     } catch (error) {
       return rejectWithValue(
-        error.response ? error.response.data : 'Unknown error'
+        error.response ? error.response.data : error.message || 'Unknown error'
       );
     }
   }
@@ -27,7 +27,11 @@ export const newsSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setNews: (state, action) => {
+      state.news = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNews.pending, (state) => {
@@ -45,4 +49,5 @@ export const newsSlice = createSlice({
   },
 });
 
+export const { setNews } = newsSlice.actions;
 export default newsSlice.reducer;

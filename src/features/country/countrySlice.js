@@ -6,24 +6,21 @@ export const fetchCountries = createAsyncThunk(
   'countries/fetchCountries',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${RESTCOUNTRIES}/all`);
-      return response.data;
+      const { data } = await axios.get(`${RESTCOUNTRIES}/all`);
+      return data;
     } catch (error) {
-      return rejectWithValue(
-        error.response ? error.response.data : 'Unknown error'
-      );
+      return rejectWithValue(error.response?.data || 'Unknown error');
     }
   }
 );
 
-export const countrySlice = createSlice({
+const countrySlice = createSlice({
   name: 'countries',
   initialState: {
     countries: [],
     loading: false,
     error: null,
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCountries.pending, (state) => {

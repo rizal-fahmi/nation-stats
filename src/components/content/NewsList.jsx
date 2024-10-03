@@ -11,7 +11,7 @@ const NewsList = ({ news }) => {
         >
           <Link to={n.web_url}>
             <img
-              className="rounded-t-2xl"
+              className="rounded-t-2xl h-60 w-full"
               src={
                 n.multimedia.length > 0
                   ? `https://static01.nyt.com/${n.multimedia[0].url}`
