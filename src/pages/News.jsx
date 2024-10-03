@@ -1,28 +1,19 @@
-import { useEffect, useState } from 'react';
-import NyTimes from '../services/NyTimes';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNews } from '../features/news/newsSlice';
 import NewsList from '../components/content/NewsList';
 
 function News() {
-  const [news, setNews] = useState([]);
-  const [error, setError] = useState(null);
-
-  async function getNews() {
-    try {
-      const data = await NyTimes();
-      setNews(data.response.docs);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  const dispatch = useDispatch();
+  const { news, loading, error } = useSelector((state) => state.news);
 
   useEffect(() => {
-    getNews();
-  }, []);
+    dispatch(fetchNews('peace'));
+  }, [dispatch]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-	console.log(news)
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <>
       <NewsList news={news} />

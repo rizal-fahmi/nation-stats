@@ -4,8 +4,8 @@ import { NYTIMES } from '../../constans/baseURL';
 
 const NYTIMES_KEY = import.meta.env.VITE_NYTIMES_KEY;
 
-export const fetchArticles = createAsyncThunk(
-  'articles/fetchArticles',
+export const fetchNews = createAsyncThunk(
+  'news/fetchNews',
   async (query, { rejectWithValue }) => {
     try {
       const response = await axios.get(
@@ -20,29 +20,29 @@ export const fetchArticles = createAsyncThunk(
   }
 );
 
-export const articleSlice = createSlice({
-  name: 'articles',
+export const newsSlice = createSlice({
+  name: 'news',
   initialState: {
-    articles: [],
+    news: [],
     loading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticles.pending, (state) => {
+      .addCase(fetchNews.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchArticles.fulfilled, (state, action) => {
+      .addCase(fetchNews.fulfilled, (state, action) => {
         state.loading = false;
-        state.articles = action.payload;
+        state.news = action.payload;
       })
-      .addCase(fetchArticles.rejected, (state, action) => {
+      .addCase(fetchNews.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default articleSlice.reducer;
+export default newsSlice.reducer;
