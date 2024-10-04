@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import logo from '../../../public/logo.png';
 
 function Navbar() {
   return (
@@ -9,11 +10,7 @@ function Navbar() {
             to={`/`}
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img
-              src="logo.png"
-              className="h-8"
-              alt="nationstats logo"
-            />
+            <img src={logo} className="h-8" alt="nationstats logo" />
           </Link>
           <button
             data-collapse-toggle="navbar-default"
@@ -44,7 +41,11 @@ function Navbar() {
               <li>
                 <NavLink
                   to={`/`}
-                  className="block py-2 px-3 mx-2 text-gray-700 font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={({ isActive }) =>
+                    `block py-2 px-3 mx-2 font-medium rounded ${
+                      isActive ? 'text-blue-700' : 'text-gray-700'
+                    } hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white`
+                  }
                 >
                   Home
                 </NavLink>
@@ -52,7 +53,11 @@ function Navbar() {
               <li>
                 <NavLink
                   to={`/compare`}
-                  className="block py-2 px-3 mx-2 text-gray-700 font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={({ isActive }) =>
+                    `block py-2 px-3 mx-2 font-medium rounded ${
+                      isActive ? 'text-blue-700' : 'text-gray-700'
+                    } hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white`
+                  }
                 >
                   Compare
                 </NavLink>
@@ -60,7 +65,11 @@ function Navbar() {
               <li>
                 <NavLink
                   to={`/news`}
-                  className="block py-2 px-3 mx-2 text-gray-700 font-medium rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className={({ isActive }) =>
+                    `block py-2 px-3 mx-2 font-medium rounded ${
+                      isActive ? 'text-blue-700' : 'text-gray-700'
+                    } hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white`
+                  }
                 >
                   News
                 </NavLink>
