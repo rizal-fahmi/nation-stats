@@ -1,7 +1,7 @@
 function Loader() {
 	return (
     <div className="flex-col gap-4 w-full flex items-center justify-center h-96">
-      <div className="w-32 h-32 border-8 text-blue-500 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-blue-500 rounded-full">
+      <div className="w-32 h-32 border-8 text-blue-400 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-blue-400 rounded-full">
         <svg
           viewBox="0 0 24 24"
           fill="currentColor"
