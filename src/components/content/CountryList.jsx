@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import formatPopulation from './Formatpopulation';
+import formatPopulation from './FormatPopulation';
 
 const CountryList = ({ countries }) => {
   return (
