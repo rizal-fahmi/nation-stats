@@ -38,4 +38,5 @@ const countrySlice = createSlice({
   },
 });
 
+export const selectCountries = (state) => state.countries.countries;
 export default countrySlice.reducer;
