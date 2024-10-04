@@ -28,16 +28,16 @@ const ResultCompare = () => {
   return (
     <>
       <Compare />
-      <div className="flex-grow max-w-screen-lg mx-auto -mt-16">
+      <div className="flex-grow max-w-screen-lg mx-auto -mt-20 border-t-2 border-gray-400">
         {!countryData1 || !countryData2 ? (
           <p className="text-red-500 text-center mb-5">
             Please select two valid countries
           </p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100">
+            <table className="min-w-full">
               <thead>
-                <tr className="border-t-2 border-gray-400 text-gray-700">
+                <tr className=" text-gray-700">
                   <th className="pb-2 pt-10 w-1/3 text-center text-xl">
                     {countryData1.name.common}
                   </th>
@@ -180,7 +180,7 @@ const ResultCompare = () => {
                       height="200"
                       style={{ border: '0' }}
                       allowFullScreen
-                      className='rounded-md border'
+                      className="rounded-md border"
                     ></iframe>
                   </td>
                 </tr>

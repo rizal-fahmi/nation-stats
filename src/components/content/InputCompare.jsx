@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 
-const InputCompare = ({ countries, onSelect }) => {
+const InputCompare = ({ countries, onSelect, selectedCountry }) => {
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
@@ -10,6 +10,7 @@ const InputCompare = ({ countries, onSelect }) => {
     if (text.length > 0) {
       const filteredCountries = countries.filter((country) =>
         country.name.common.toLowerCase().includes(text.toLowerCase())
+        && country.cca2 !== selectedCountry
       );
       setSuggestions(filteredCountries);
     } else {
