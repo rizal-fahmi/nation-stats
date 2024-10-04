@@ -12,7 +12,7 @@ function Navbar() {
             <img
               src="logo.png"
               className="h-8"
-              alt="Flowbite Logo"
+              alt="nationstats logo"
             />
           </Link>
           <button
