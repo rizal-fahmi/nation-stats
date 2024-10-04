@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { NYTIMES } from '../../constans/baseURL';
 
-const NYTIMES_KEY = import.meta.env.VITE_NYTIMES_KEY;
+const NYTIMES_KEY = import.meta.env.NYTIMES_KEY;
 
 export const fetchNews = createAsyncThunk(
   'news/fetchNews',
