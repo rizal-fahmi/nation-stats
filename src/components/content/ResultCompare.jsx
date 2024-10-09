@@ -115,73 +115,18 @@ const ResultCompare = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="text-center">
+                  <td className="text-center pb-8">
                     {countryData1.currencies &&
                       Object.entries(countryData1.currencies)
                         .map(([, { name, symbol }]) => `${name} (${symbol})`)
                         .join(', ')}
                   </td>
-                  <td className="text-center font-bold">Currencies</td>
-                  <td className="text-center">
+                  <td className="text-center font-bold pb-8">Currencies</td>
+                  <td className="text-center pb-8">
                     {countryData2.currencies &&
                       Object.entries(countryData2.currencies)
                         .map(([, { name, symbol }]) => `${name} (${symbol})`)
                         .join(', ')}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="flex justify-center py-2">
-                    {countryData1.coatOfArms.svg && (
-                      <img
-                        src={countryData1.coatOfArms.svg}
-                        alt={`Coat of arms of ${countryData1.name.common}`}
-                        className="h-16 object-contain mb-2 rounded-md"
-                      />
-                    )}
-                  </td>
-                  <td className="text-center font-bold">Coat of arms</td>
-                  <td className="flex justify-center">
-                    {countryData2.coatOfArms.svg && (
-                      <img
-                        src={countryData2.coatOfArms.svg}
-                        alt={`Coat of arms of ${countryData2.name.common}`}
-                        className="h-16 object-contain mb-2 rounded-md"
-                      />
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="flex justify-center pb-8">
-                    <iframe
-                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${
-                        countryData1.latlng[1] - 0.5
-                      },${countryData1.latlng[0] - 0.5},${
-                        countryData1.latlng[1] + 0.5
-                      },${countryData1.latlng[0] + 0.5}&layer=mapnik&marker=${
-                        countryData1.latlng[0]
-                      },${countryData1.latlng[1]}`}
-                      width="300"
-                      height="200"
-                      style={{ border: '0' }}
-                      allowFullScreen
-                    ></iframe>
-                  </td>
-                  <td className="text-center font-bold">OpenStreetMap</td>
-                  <td className="flex justify-center pb-8">
-                    <iframe
-                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${
-                        countryData2.latlng[1] - 0.5
-                      },${countryData2.latlng[0] - 0.5},${
-                        countryData2.latlng[1] + 0.5
-                      },${countryData2.latlng[0] + 0.5}&layer=mapnik&marker=${
-                        countryData2.latlng[0]
-                      },${countryData2.latlng[1]}`}
-                      width="300"
-                      height="200"
-                      style={{ border: '0' }}
-                      allowFullScreen
-                      className="rounded-md border"
-                    ></iframe>
                   </td>
                 </tr>
               </tbody>
